@@ -1,1 +1,1 @@
-# 6.hafta
+# 6.hafta 
