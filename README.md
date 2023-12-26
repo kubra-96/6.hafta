@@ -1,1 +1,48 @@
 # 6.hafta 
+import React, { useState } from 'react';
+
+const TemperatureConverter = () => {
+  const [temperature, setTemperature] = useState('');
+  const [unit, setUnit] = useState('celsius');
+
+  const handleChange = (e) => {
+    setTemperature(e.target.value);
+  };
+
+  const handleUnitChange = (e) => {
+    setUnit(e.target.value);
+  };
+
+  const convertTemperature = () => {
+    if (unit === 'celsius') {
+      return (temperature - 32) * (5 / 9);
+    } else {
+      return (temperature * 9) / 5 + 32;
+    }
+  };
+
+  return (
+    <div>
+      <h2>Temperature Converter</h2>
+      <label>
+        Temperature:
+        <input type="number" value={temperature} onChange={handleChange} />
+      </label>
+      <br />
+      <label>
+        Unit:
+        <select value={unit} onChange={handleUnitChange}>
+          <option value="celsius">Celsius</option>
+          <option value="fahrenheit">Fahrenheit</option>
+        </select>
+      </label>
+      <br />
+      <p>
+        Converted Temperature: {convertTemperature().toFixed(2)}{' '}
+        {unit === 'celsius' ? 'Celsius' : 'Fahrenheit'}
+      </p>
+    </div>
+  );
+};
+
+export default TemperatureConverter;
